@@ -4,13 +4,26 @@ Copy of ther Anki-Connect package for Soki usage. Anki-Connect is compatible wit
 
 ## Installation
 
-The installation process in Anki needs to be manual till we have a deployed add-on. Follow this steps to add the ACFS to Anki:
+Until the add-on is officially deployed, Anki requires a **manual installation**.  
+Follow these steps to add **ACFS** to Anki:
 
-1. Zip the content of the plugin folder. A commom mistake is to zip the folder it self, only the content of the folder needs to be ziped for this to work.  
-2.  Rename the zip folder to ACFS.ankiaddon
-3.  Open Anki and go to the Add-ons window, add the .ankiaddon file.
-4. Restart Anki to apply changes. 
+1. **Zip the plugin contents**  
+   - Go inside the plugin folder.  
+   - Select all the files and folders inside it.  
+   - Create a `.zip` archive from these items.  
+   ⚠️ *Important:* Do **not** zip the plugin folder itself — only its contents.  
 
+2. **Rename the archive**  
+   Change the file name and extension to: ACFS.ankiaddon
+
+3. **Install the add-on in Anki**  
+- Open Anki.  
+- Go to **Tools > Add-ons**.  (ctrs+shift+A for windows) 
+- Click **Install from file...** and select/drag the `ACFS.ankiaddon` file.  
+
+4. **Restart Anki**  
+Close and reopen Anki to activate the add-on.
+ 
 Anki must be kept running in the background in order for other applications to be able to use Anki-Connect. You can verify that Anki-Connect is running at any time by accessing `localhost:8765` in your browser. If the server is running, you will see the message `Anki-Connect` displayed in your browser window.
 
 ### Notes for Windows Users
