@@ -6,6 +6,9 @@
     "webCorsOriginList": [ 
         "http://localhost",
         "https://sokimemo.com",
-        "https://www.sokimemo.com"],
+        "https://www.sokimemo.com",
+        "https://soki.ai",
+        "https://www.soki.ai"
+    ],
     "ignoreOriginList": []
 }

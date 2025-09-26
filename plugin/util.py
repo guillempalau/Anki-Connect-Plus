@@ -75,7 +75,13 @@ DEFAULT_CONFIG = {
     'webBindAddress': os.getenv('ANKICONNECT_BIND_ADDRESS', '127.0.0.1'),
     'webBindPort': 8765,
     'webCorsOrigin': os.getenv('ANKICONNECT_CORS_ORIGIN', None),
-    'webCorsOriginList': ['http://localhost'],
+    'webCorsOriginList': [
+        'http://localhost',
+        "https://sokimemo.com",
+        "https://www.sokimemo.com",
+        "https://soki.ai",
+        "https://www.soki.ai"
+        ],
     'ignoreOriginList': [],
     'webTimeout': 10000,
 }

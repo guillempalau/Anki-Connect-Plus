@@ -32,6 +32,7 @@ import platform
 import re
 import time
 import unicodedata
+import urllib.parse
 
 import anki
 import anki.exporting
@@ -44,11 +45,12 @@ from anki.notes import Note
 from anki.errors import NotFoundError
 from anki.scheduler.base import ScheduleCardsAsNew
 from aqt.qt import Qt, QTimer, QMessageBox, QCheckBox
+from aqt import gui_hooks
+from aqt.utils import openLink
 
 from .web import format_exception_reply, format_success_reply
 from .edit import Edit
 from . import web, util
-
 
 #
 # AnkiConnect
@@ -2063,6 +2065,7 @@ class AnkiConnect:
         else:
             import_file(self.window(), path)
 
+    
 
     @util.api()
     def guiExitAnki(self):
@@ -2175,6 +2178,37 @@ class AnkiConnect:
 
 
 #
+# Custom review button added to the overview section
+#
+def add_custom_button(deck_browser, content):
+    pattern = r'(<button id="study".*?<\/button>)'
+    replacement = r"""\1<button id="test" class="but" onclick="pycmd('review_with_soki');return false;">Discuss in Project X</button>"""
+    content.table = re.sub(pattern, replacement, content.table, flags=re.DOTALL)
+
+def handle_custom_action(handled, cmd, context):
+    # Handle the custom button click action
+    if cmd == "review_with_soki":
+        # Open www.sokimemo.com/decks with the deck name as a query parameter
+        mw = getattr(context, 'mw', None)
+        deck_name = None
+        if mw is not None and hasattr(mw, 'col') and mw.col is not None:
+            did = mw.col.decks.selected()
+            deck = mw.col.decks.get(did)
+            if deck and 'name' in deck:
+                deck_name = deck['name']
+        url = "https://www.sokimemo.com/decks"
+        if deck_name:
+            url += f"?deck={urllib.parse.quote(deck_name)}"
+        openLink(url)
+        return (True, None)
+    return handled
+
+def setup_review_button():
+    gui_hooks.overview_will_render_content.append(add_custom_button)
+    gui_hooks.webview_did_receive_js_message.append(handle_custom_action)
+
+
+#
 # Entry
 #
 
@@ -2185,6 +2219,9 @@ if __name__ != "plugin":
         util.patch_anki_2_1_50_having_null_stdout_on_windows()
 
     Edit.register_with_anki()
+
+    # Set up review button in overview
+    setup_review_button()
 
     ac = AnkiConnect()
     ac.initLogging()
