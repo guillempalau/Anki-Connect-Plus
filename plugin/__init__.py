@@ -78,7 +78,7 @@ class AnkiConnect:
         except:
             QMessageBox.critical(
                 self.window(),
-                'AnkiConnect',
+                'Anki Connect Plus',
                 'Failed to listen on port {}.\nMake sure it is available and is not in use.'.format(util.setting('webBindPort'))
             )
 
@@ -417,7 +417,7 @@ class AnkiConnect:
         else:  # prompt the user
             msg = QMessageBox(None)
             msg.setWindowTitle("A website wants to access to Anki")
-            msg.setText('"{}" requests permission to use Anki through AnkiConnect. Do you want to give it access?'.format(origin))
+            msg.setText('"{}" requests permission to use Anki through Anki Connect Plus. Do you want to give it access?'.format(origin))
             msg.setInformativeText("By granting permission, you'll allow the website to modify your collection on your behalf, including the execution of destructive actions such as deck deletion.")
             msg.setWindowIcon(self.window().windowIcon())
             msg.setIcon(QMessageBox.Icon.Question)

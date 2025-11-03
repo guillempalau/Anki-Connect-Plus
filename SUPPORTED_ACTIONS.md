@@ -1821,9 +1821,9 @@ Documentation for currently supported actions is split up by category and is ref
     corresponding to whether your origin is trusted. If your origin is trusted, the fields `requireApiKey` (`true` if
     required) and `version` will also be returned.
 
-    This should be the first call you make to make sure that your application and Anki-Connect are able to communicate
-    properly with each other. New versions of Anki-Connect are backwards compatible; as long as you are using actions
-    which are available in the reported Anki-Connect version or earlier, everything should work fine.
+    This should be the first call you make to make sure that your application and Anki Connect Plus are able to communicate
+    properly with each other. New versions of Anki Connect Plus are backwards compatible; as long as you are using actions
+    which are available in the reported Anki Connect Plus version or earlier, everything should work fine.
 
     <details>
     <summary><i>Sample request:</i></summary>
@@ -1889,7 +1889,7 @@ Documentation for currently supported actions is split up by category and is ref
 
 #### `apiReflect`
 
-*   Gets information about the AnkiConnect APIs available. The request supports the following params:
+*   Gets information about the Anki Connect Plus APIs available. The request supports the following params:
 
     * `scopes` - An array of scopes to get reflection information about.
       The only currently supported value is `"actions"`.
@@ -3403,7 +3403,7 @@ Documentation for currently supported actions is split up by category and is ref
 *   Creates a note using the given deck and model, with the provided field values and tags. Returns the identifier of
     the created note created on success, and `null` on failure.
 
-    Anki-Connect can download audio, video, and picture files and embed them in newly created notes. The corresponding `audio`, `video`, and `picture` note members are
+    Anki Connect Plus can download audio, video, and picture files and embed them in newly created notes. The corresponding `audio`, `video`, and `picture` note members are
     optional and can be omitted. If you choose to include any of them, they should contain a single object or an array of objects
     with the mandatory `filename` field and one of `data`, `path` or `url`. Refer to the documentation of `storeMediaFile` for an explanation of these fields.
     The `skipHash` field can be optionally provided to skip the inclusion of files with an MD5 hash that matches the provided value.
@@ -3650,7 +3650,7 @@ Documentation for currently supported actions is split up by category and is ref
 
     > **Warning**:
     > You must not be viewing the note that you are updating on your Anki browser, otherwise
-    > the fields will not update. See [this issue](https://github.com/FooSoft/anki-connect/issues/82)
+    > the fields will not update.
     > for further details.
 
     <details>
@@ -3708,7 +3708,7 @@ Documentation for currently supported actions is split up by category and is ref
 
     > **Warning**
     > You must not be viewing the note that you are updating on your Anki browser, otherwise
-    > the fields will not update. See [this issue](https://github.com/FooSoft/anki-connect/issues/82)
+    > the fields will not update.
     > for further details.
 
     <details>
