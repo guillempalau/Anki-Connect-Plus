@@ -1,5 +1,6 @@
 *.pyc
 AnkiConnectPlus.zip
+*.ankiaddon
 meta.json
 .idea/
 .tox/
